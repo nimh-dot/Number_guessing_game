@@ -10,6 +10,10 @@ var guessField = document.querySelector('.guessField');
 var guessCount = 1;
 var resetButton;
 
+let guessSubmit2 = document.querySelector('.guessSubmit2');
+
+
+
 guessField.focus();
 
 function checkGuess() {
@@ -71,3 +75,9 @@ function setGameOver() {
   
     randomNumber = Math.floor(Math.random() * 100) + 1;
   }
+
+guessSubmit2.onchange = function () {
+    guessField.textContent = 'Enter a guess: ' + guessSubmit2.value;
+};
+
+console.log(guessSubmit2.value);
