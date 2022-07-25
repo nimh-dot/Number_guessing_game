@@ -7,6 +7,10 @@ body {
     text-align: center;
 }
 
+.rangeGrid {
+    display: flex;
+}
+
 .resultParas {
     display: grid;
     text-align: center;

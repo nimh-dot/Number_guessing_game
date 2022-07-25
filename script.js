@@ -32,7 +32,9 @@ function setGameOver() {
   
     resetButton.parentNode.removeChild(resetButton);
     submit2.min = 1;
+    document.getElementById('minR').textContent = 1;
     submit2.max = 100;
+    document.getElementById('maxR').textContent = 100;
     submit2.disabled = false;
     lastResult.style.backgroundColor = 'white';
   
@@ -66,10 +68,12 @@ function fun2() {
     if(userGuess < randomNumber) {
       lowOrHi.textContent = 'Last guess was too low!';
       submit2.min = userGuess;
+      document.getElementById('minR').textContent = userGuess;
     } else if(userGuess > randomNumber) {
       lowOrHi.textContent = 'Last guess was too high!';
       //lowOrHi.style.
       submit2.max = userGuess;
+      document.getElementById('maxR').textContent = userGuess;
     }
     guessCount ++;
 }

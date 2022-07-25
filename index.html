@@ -31,8 +31,11 @@
 
     <div class="form">
       <label for="guessField">Enter a guess:<output id="outputGuessesByRange"></output> </label><br>
-      <input class="guessSubmit2" id="submit2" type="range" min="1" max="100" step="1" value="50" oninput="fun1()" onchange="fun2()"><br>
-    
+      <span class="rangeGrid">
+      <label id="minR"></label>
+      <input class="guessSubmit2" id="submit2" type="range" min="1" max="100" step="1" value="50" oninput="fun1()" onchange="fun2()">
+      <label id="maxR"></label><br>
+      </span>
       <!-- <input type="text" id="guessField" class="guessField">
       <input type="submit" value="Submit guess" class="guessSubmit"> -->
     </div>
