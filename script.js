@@ -1,56 +1,20 @@
 var randomNumber = Math.floor(Math.random() * 100) + 1;
-
 var guesses = document.querySelector('.guesses');
 var lastResult = document.querySelector('.lastResult');
 var lowOrHi = document.querySelector('.lowOrHi');
-
 var guessSubmit = document.querySelector('.guessSubmit');
 var guessField = document.querySelector('.guessField');
-
 var outputGuessesByRange = document.getElementById('outputGuessesByRange');
-
 var guessCount = 1;
 var resetButton;
-
 var submit2 = document.getElementById('submit2'); 
-
-
 
 submit2.focus();
 
 function checkGuess() {
-   /* 
-    var userGuess = Number(guessField.value);
-    if (guessCount === 1) {
-      guesses.textContent = 'Previous guesses: ';
-    }
-    guesses.textContent += userGuess + ' ';
-  
-    if (userGuess === randomNumber) {
-      lastResult.textContent = 'Congratulations! You got it right!';
-      lastResult.style.backgroundColor = 'green';
-      lowOrHi.textContent = '';
-      setGameOver();
-    } else if (guessCount === 10) {
-      lastResult.textContent = '!!!GAME OVER!!!';
-      setGameOver();
-    } else {
-      lastResult.textContent = 'Wrong!';
-      lastResult.style.backgroundColor = 'red';
-      if(userGuess < randomNumber) {
-        lowOrHi.textContent = 'Last guess was too low!';
-      } else if(userGuess > randomNumber) {
-        lowOrHi.textContent = 'Last guess was too high!';
-      }
-
-  }
-  */
 }
 
-// guessSubmit.addEventListener('click', checkGuess);
-
 function setGameOver() {
-    //guessField.disabled = true;
     submit2.disabled = true;
     resetButton = document.createElement('button');
     resetButton.textContent = 'Start new game';
@@ -67,14 +31,9 @@ function setGameOver() {
     }
   
     resetButton.parentNode.removeChild(resetButton);
-  
-    //guessField.disabled = false;
     submit2.min = 1;
     submit2.max = 100;
     submit2.disabled = false;
-    //guessField.value = '';
-    //guessField.focus();
-  
     lastResult.style.backgroundColor = 'white';
   
     randomNumber = Math.floor(Math.random() * 100) + 1;
@@ -109,9 +68,10 @@ function fun2() {
       submit2.min = userGuess;
     } else if(userGuess > randomNumber) {
       lowOrHi.textContent = 'Last guess was too high!';
+      //lowOrHi.style.
       submit2.max = userGuess;
     }
     guessCount ++;
 }
-console.log(guessCount);
+//console.log(guessCount);
 }
