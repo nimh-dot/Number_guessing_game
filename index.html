@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-
+    <link rel="stylesheet" href="style.css">
     <title>Number guessing game</title>
 
     <style>
@@ -30,12 +30,11 @@
     <p>We have selected a random number between 1 and 100. See if you can guess it in 10 turns or fewer. We'll tell you if your guess was too high or too low.</p>
 
     <div class="form">
-      <label for="guessField">Enter a guess: </label><br>
-      
-      <input class="guessSubmit2" type="range" min="1" max="100" step="1" value="50"><br>
+      <label for="guessField">Enter a guess:<output id="outputGuessesByRange"></output> </label><br>
+      <input class="guessSubmit2" id="submit2" type="range" min="1" max="100" step="1" value="50" oninput="fun1()" onchange="fun2()"><br>
     
-      <input type="text" id="guessField" class="guessField">
-      <input type="submit" value="Submit guess" class="guessSubmit">
+      <!-- <input type="text" id="guessField" class="guessField">
+      <input type="submit" value="Submit guess" class="guessSubmit"> -->
     </div>
 
     <div class="resultParas">

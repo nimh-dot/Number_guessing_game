@@ -7,18 +7,19 @@ var lowOrHi = document.querySelector('.lowOrHi');
 var guessSubmit = document.querySelector('.guessSubmit');
 var guessField = document.querySelector('.guessField');
 
+var outputGuessesByRange = document.getElementById('outputGuessesByRange');
+
 var guessCount = 1;
 var resetButton;
 
-let guessSubmit2 = document.querySelector('.guessSubmit2');
+var submit2 = document.getElementById('submit2'); 
 
 
 
-guessField.focus();
+submit2.focus();
 
 function checkGuess() {
-    //alert('I am a placeholder');
-
+   /* 
     var userGuess = Number(guessField.value);
     if (guessCount === 1) {
       guesses.textContent = 'Previous guesses: ';
@@ -43,13 +44,14 @@ function checkGuess() {
       }
 
   }
+  */
 }
 
-guessSubmit.addEventListener('click', checkGuess);
+// guessSubmit.addEventListener('click', checkGuess);
 
 function setGameOver() {
-    guessField.disabled = true;
-    guessSubmit.disabled = true;
+    //guessField.disabled = true;
+    submit2.disabled = true;
     resetButton = document.createElement('button');
     resetButton.textContent = 'Start new game';
     document.body.appendChild(resetButton);
@@ -66,18 +68,50 @@ function setGameOver() {
   
     resetButton.parentNode.removeChild(resetButton);
   
-    guessField.disabled = false;
-    guessSubmit.disabled = false;
-    guessField.value = '';
-    guessField.focus();
+    //guessField.disabled = false;
+    submit2.min = 1;
+    submit2.max = 100;
+    submit2.disabled = false;
+    //guessField.value = '';
+    //guessField.focus();
   
     lastResult.style.backgroundColor = 'white';
   
     randomNumber = Math.floor(Math.random() * 100) + 1;
   }
 
-guessSubmit2.onchange = function () {
-    guessField.textContent = 'Enter a guess: ' + guessSubmit2.value;
-};
+function fun1 () {
+  outputGuessesByRange.textContent = submit2.value;
+}
 
-console.log(guessSubmit2.value);
+function fun2() {
+  document.getElementById('outputGuessesByRange').textContent = submit2.value;
+
+  var userGuess = Number(submit2.value);
+  if (guessCount === 1) {
+    guesses.textContent = 'Previous guesses: ';
+  }
+  guesses.textContent += userGuess + ' ';
+
+  if (userGuess === randomNumber) {
+    lastResult.textContent = 'Congratulations! You got it right!';
+    lastResult.style.backgroundColor = 'green';
+    lowOrHi.textContent = '';
+    setGameOver();
+  } else if (guessCount === 10) {
+    lastResult.textContent = '!!!GAME OVER!!!';
+    setGameOver();
+  } else {
+    lastResult.textContent = 'Wrong!';
+    lastResult.style.backgroundColor = 'red';
+    if(userGuess < randomNumber) {
+      lowOrHi.textContent = 'Last guess was too low!';
+      submit2.min = userGuess;
+    } else if(userGuess > randomNumber) {
+      lowOrHi.textContent = 'Last guess was too high!';
+      submit2.max = userGuess;
+    }
+    guessCount ++;
+}
+console.log(guessCount);
+}
