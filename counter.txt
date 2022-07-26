@@ -1,0 +1,43 @@
+Самый простой способ это через куки.
+
+Код работы с куками: (установка, получение и удаление)
+function setCookie(name,value,days) {
+  if (days) {
+    var date = new Date();
+    date.setTime(date.getTime()+(days*24*60*60*1000));
+    var expires = "; expires="+date.toGMTString();
+  }
+  else var expires = "";
+  document.cookie = name+"="+value+expires+"; path=/";
+}
+function getCookie(name) {
+  var nameEQ = name + "=";
+  var ca = document.cookie.split(';');
+  for(var i=0;i < ca.length;i++) {
+    var c = ca[i];
+    while (c.charAt(0)==' ') c = c.substring(1,c.length);
+    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+  }
+  return null;
+}
+function delCookie(name) {
+  setCookie(name,"",-1);
+}
+
+// Алгоритм простой, при первом заходе пользователя на страницу проверяем, стоит ли у него кука "counter",
+// если стоит, то получаем её значение + 1 и снова сохраняем. Где-нибудь выводим её значение. Если не стоит,
+// то просто создаем со значением =1 и с каким нибудь большим временем жизни.
+
+if (getCookie("counter")) {
+  var count=getCookie("counter")+1;
+  setCookie("counter",count,365);
+} else {
+  setCookie("counter",1,365);
+}
+
+console.log("Вы зашли на эту страницу "+getCookie("counter"));
+
+
+//Чтоб-бы сохранять посещения только за одну сессию (не считая каждого обновления страницы и внутренних переходов)
+// дополнительно создаем куку длительностью сессии (не указываем время жизни куки) и делаем дополнительную проверку,
+//  если доп. куки нету, значит к счетчику +1 и создаем доп. куку, если доп. кука есть, значит ничего не делаем.
